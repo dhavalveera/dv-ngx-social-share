@@ -3,5 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "dv-ngx-social-share": {
+      "projectType": "library",
+      "root": "projects/dv-ngx-social-share",
+      "sourceRoot": "projects/dv-ngx-social-share/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/dv-ngx-social-share/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dv-ngx-social-share/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/dv-ngx-social-share/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/dv-ngx-social-share/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
   }
 }

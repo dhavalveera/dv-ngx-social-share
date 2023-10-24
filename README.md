@@ -248,7 +248,7 @@ export class AppModule {}
 
 
 ```html
-<insta-paper-share-btn url="https://dv-ngx-social-share.vercel.app" title="dv-ngx-social-share is a social share buttons for your Angular apps."></insta-paper-share-btn>
+<instapaper-share-btn url="https://dv-ngx-social-share.vercel.app" title="dv-ngx-social-share is a social share buttons for your Angular apps."></instapaper-share-btn>
 ```
 
 #### 📖 InstapaperShareBtn Props
@@ -287,7 +287,7 @@ export class AppModule {}
 
 
 ```html
-<linked-in-share-btn url="https://dv-ngx-social-share.vercel.app" title="dv-ngx-social-share is a social share buttons for your Angular apps."></linked-in-share-btn>
+<linkedin-share-btn url="https://dv-ngx-social-share.vercel.app" title="dv-ngx-social-share is a social share buttons for your Angular apps."></linkedin-share-btn>
 ```
 
 #### 📖 LinkedInShareBtn Props
@@ -546,7 +546,7 @@ export class AppModule {}
 
 
 ```html
-<whats-app-share-btn url="https://dv-ngx-social-share.vercel.app" title="dv-ngx-social-share is a social share buttons for your Angular apps."></whats-app-share-btn>
+<whatsapp-share-btn url="https://dv-ngx-social-share.vercel.app" title="dv-ngx-social-share is a social share buttons for your Angular apps."></whatsapp-share-btn>
 ```
 
 #### 📖 WhatsAppShareBtn Props

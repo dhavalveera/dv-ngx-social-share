@@ -14,7 +14,7 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'insta-paper-share-btn',
+  selector: 'instapaper-share-btn',
   templateUrl: './insta-paper-share-btn.component.html',
   styleUrls: ['./insta-paper-share-btn.component.css'],
 })

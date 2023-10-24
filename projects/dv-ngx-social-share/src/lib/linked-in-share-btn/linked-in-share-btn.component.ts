@@ -14,7 +14,7 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'linked-in-share-btn',
+  selector: 'linkedin-share-btn',
   templateUrl: './linked-in-share-btn.component.html',
   styleUrls: ['./linked-in-share-btn.component.css'],
 })

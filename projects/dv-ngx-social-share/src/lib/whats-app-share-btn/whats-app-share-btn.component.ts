@@ -15,7 +15,7 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'whats-app-share-btn',
+  selector: 'whatsapp-share-btn',
   templateUrl: './whats-app-share-btn.component.html',
   styleUrls: ['./whats-app-share-btn.component.css'],
 })

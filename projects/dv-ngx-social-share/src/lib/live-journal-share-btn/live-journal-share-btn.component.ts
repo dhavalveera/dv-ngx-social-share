@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import LiveJournalShareIcon from './live-journal-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,23 +14,23 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'live-journal-share-btn',
+  templateUrl: './live-journal-share-btn.component.html',
+  styleUrls: ['./live-journal-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class LiveJournalShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  liveJournalIcon = LiveJournalShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
+  shareOnLiveJournal() {
+    const generatedLink = `https://www.livejournal.com/update.bml${generateQueryParams(
       {
-        text: this.title,
-        url: this.url,
+        subject: this.title,
+        event: this.url,
       }
     )}`;
 

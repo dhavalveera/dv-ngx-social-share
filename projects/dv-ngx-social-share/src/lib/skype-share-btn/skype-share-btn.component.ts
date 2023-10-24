@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import SkypeShareIcon from './skype-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,25 +14,23 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'skype-share-btn',
+  templateUrl: './skype-share-btn.component.html',
+  styleUrls: ['./skype-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class SkypeShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  skypeIcon = SkypeShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
-      {
-        text: this.title,
-        url: this.url,
-      }
-    )}`;
+  shareOnSkype() {
+    const generatedLink = `https://web.skype.com/share${generateQueryParams({
+      text: this.title,
+      url: this.url,
+    })}`;
 
     const windowConfig = {
       width: 600,

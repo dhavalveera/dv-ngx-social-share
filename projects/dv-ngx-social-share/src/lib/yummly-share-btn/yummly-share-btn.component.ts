@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import YummlyShareIcon from './yummly-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,23 +14,27 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'yummly-share-btn',
+  templateUrl: './yummly-share-btn.component.html',
+  styleUrls: ['./yummly-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class YummlyShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
+  @Input() image?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  yummlyIcon = YummlyShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
+  shareOnYummly() {
+    const generatedLink = `https://www.yummly.com/urb/verify${generateQueryParams(
       {
-        text: this.title,
+        title: this.title,
         url: this.url,
+        urbtype: 'bookmarklet',
+        type: 'agg',
+        image: this.image,
       }
     )}`;
 

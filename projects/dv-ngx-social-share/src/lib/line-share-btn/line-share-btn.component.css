@@ -1,4 +1,4 @@
-.bufferShareBtn {
+.lineShareBtn {
   border: none;
   background: transparent;
   overflow: hidden;
@@ -9,7 +9,7 @@
   -o-transition: all 3s ease;
 }
 
-.bufferShareBtn:hover {
+.lineShareBtn:hover {
   transform: scale(1.2);
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import PinterestShareIcon from './pinterest-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,23 +14,25 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'pinterest-share-btn',
+  templateUrl: './pinterest-share-btn.component.html',
+  styleUrls: ['./pinterest-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class PinterestShareBtnComponent {
   @Input() url: string = '';
-  @Input() title?: string | undefined;
+  @Input() media: string = '';
+  @Input() description?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  pinterestIcon = PinterestShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
+  shareOnPinterest() {
+    const generatedLink = `https://pinterest.com/pin/create/button${generateQueryParams(
       {
-        text: this.title,
         url: this.url,
+        media: this.media,
+        description: this.description,
       }
     )}`;
 

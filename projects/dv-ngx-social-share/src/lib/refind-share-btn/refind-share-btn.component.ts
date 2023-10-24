@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import RefindShareIcon from './refind-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,25 +14,21 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'refind-share-btn',
+  templateUrl: './refind-share-btn.component.html',
+  styleUrls: ['./refind-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class RefindShareBtnComponent {
   @Input() url: string = '';
-  @Input() title?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  refindIcon = RefindShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
-      {
-        text: this.title,
-        url: this.url,
-      }
-    )}`;
+  shareOnRefind() {
+    const generatedLink = `https://refind.com${generateQueryParams({
+      url: this.url,
+    })}`;
 
     const windowConfig = {
       width: 600,

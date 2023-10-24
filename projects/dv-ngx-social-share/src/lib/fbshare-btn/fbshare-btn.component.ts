@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import FBShareIcon from './fb-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,23 +14,25 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'fbshare-btn',
+  templateUrl: './fbshare-btn.component.html',
+  styleUrls: ['./fbshare-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class FBShareBtnComponent {
   @Input() url: string = '';
-  @Input() title?: string | undefined;
+  @Input() quote?: string | undefined;
+  @Input() hashTags?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  fbIcon = FBShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
+  shareOnFB() {
+    const generatedLink = `https://www.facebook.com/sharer/sharer.php${generateQueryParams(
       {
-        text: this.title,
-        url: this.url,
+        u: this.url,
+        quote: this.quote,
+        hashTags: this.hashTags,
       }
     )}`;
 

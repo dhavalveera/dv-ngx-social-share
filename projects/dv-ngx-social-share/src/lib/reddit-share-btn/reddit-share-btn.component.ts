@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import RedditShareIcon from './reddit-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,25 +14,23 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'reddit-share-btn',
+  templateUrl: './reddit-share-btn.component.html',
+  styleUrls: ['./reddit-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class RedditShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  redditIcon = RedditShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
-      {
-        text: this.title,
-        url: this.url,
-      }
-    )}`;
+  shareOnReddit() {
+    const generatedLink = `https://www.reddit.com/submit${generateQueryParams({
+      title: this.title,
+      url: this.url,
+    })}`;
 
     const windowConfig = {
       width: 600,

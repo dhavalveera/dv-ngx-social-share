@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import HackerNewsShareIcon from './hacker-news-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,20 +14,20 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'hacker-news-share-btn',
+  templateUrl: './hacker-news-share-btn.component.html',
+  styleUrls: ['./hacker-news-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class HackerNewsShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  hackerNewsIcon = HackerNewsShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
+  shareOnHackerNews() {
+    const generatedLink = `http://news.ycombinator.com/submitlink${generateQueryParams(
       {
         text: this.title,
         url: this.url,

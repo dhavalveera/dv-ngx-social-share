@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import WhatsAppShareIcon from './whats-app-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -11,28 +11,29 @@ import {
   CustomWindow,
   generateQueryParams,
   getCenterPosition,
+  isMobileOrTablet,
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'whats-app-share-btn',
+  templateUrl: './whats-app-share-btn.component.html',
+  styleUrls: ['./whats-app-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class WhatsAppShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
+  @Input() separator?: string = ' :: ';
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  whatsAppIcon = WhatsAppShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
-      {
-        text: this.title,
-        url: this.url,
-      }
-    )}`;
+  shareOnWhatsApp() {
+    const generatedLink = `https://${
+      isMobileOrTablet() ? 'api' : 'web'
+    }.whatsapp.com/send${generateQueryParams({
+      text: this.title ? this.title + this.separator + this.url : this.url,
+    })}`;
 
     const windowConfig = {
       width: 600,

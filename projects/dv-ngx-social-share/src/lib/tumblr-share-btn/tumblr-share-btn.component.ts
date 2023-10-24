@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import TumblrShareIcon from './tumblr-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,23 +14,29 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'tumblr-share-btn',
+  templateUrl: './tumblr-share-btn.component.html',
+  styleUrls: ['./tumblr-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class TumblrShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
+  @Input() caption?: string | undefined;
+  @Input() tags?: string[] | undefined;
+  @Input() postTypes?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  tumblrIcon = TumblrShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
+  shareOnTumblr() {
+    const generatedLink = `https://www.tumblr.com/widgets/share/tool${generateQueryParams(
       {
-        text: this.title,
         url: this.url,
+        text: this.title,
+        caption: this.caption,
+        tags: this.tags,
+        postTypes: this.postTypes,
       }
     )}`;
 

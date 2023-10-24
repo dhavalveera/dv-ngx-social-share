@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import InstaPaperShareIcon from './insta-paper-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,23 +14,25 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'insta-paper-share-btn',
+  templateUrl: './insta-paper-share-btn.component.html',
+  styleUrls: ['./insta-paper-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class InstaPaperShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
+  @Input() description?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  instaPaperIcon = InstaPaperShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
+  shareOnInstaPaper() {
+    const generatedLink = `http://www.instapaper.com/hello2${generateQueryParams(
       {
-        text: this.title,
+        title: this.title,
         url: this.url,
+        description: this.description,
       }
     )}`;
 

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import TrelloShareIcon from './trello-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,25 +14,24 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'trello-share-btn',
+  templateUrl: './trello-share-btn.component.html',
+  styleUrls: ['./trello-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class TrelloShareBtnComponent {
   @Input() url: string = '';
-  @Input() title?: string | undefined;
+  @Input() desc?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  trelloIcon = TrelloShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
-      {
-        text: this.title,
-        url: this.url,
-      }
-    )}`;
+  shareOnTrello() {
+    const generatedLink = `https://trello.com/add-card${generateQueryParams({
+      desc: this.desc,
+      url: this.url,
+      mode: 'popup',
+    })}`;
 
     const windowConfig = {
       width: 600,

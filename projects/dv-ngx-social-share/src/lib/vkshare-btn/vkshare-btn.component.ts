@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import VKShareIcon from './vk-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,25 +14,29 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'vkshare-btn',
+  templateUrl: './vkshare-btn.component.html',
+  styleUrls: ['./vkshare-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class VKShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
+  @Input() image?: string | undefined;
+  @Input() noParse?: boolean = false;
+  @Input() noVkLinks?: boolean = false;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  vkIcon = VKShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
-      {
-        text: this.title,
-        url: this.url,
-      }
-    )}`;
+  shareOnVK() {
+    const generatedLink = `https://vk.com/share.php${generateQueryParams({
+      url: this.url,
+      title: this.title,
+      image: this.image,
+      noparse: this.noParse ? 1 : 0,
+      no_vk_links: this.noVkLinks ? 1 : 0,
+    })}`;
 
     const windowConfig = {
       width: 600,

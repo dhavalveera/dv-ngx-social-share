@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import GABShareIcon from './gab-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,25 +14,23 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'gabshare-btn',
+  templateUrl: './gabshare-btn.component.html',
+  styleUrls: ['./gabshare-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class GABShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  gabIcon = GABShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
-      {
-        text: this.title,
-        url: this.url,
-      }
-    )}`;
+  shareOnGab() {
+    const generatedLink = `https://gab.com/compose${generateQueryParams({
+      text: this.title,
+      url: this.url,
+    })}`;
 
     const windowConfig = {
       width: 600,

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import FlipboardShareIcon from './flipboard-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,22 +14,23 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'flipboard-share-btn',
+  templateUrl: './flipboard-share-btn.component.html',
+  styleUrls: ['./flipboard-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class FlipboardShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  flipBoardIcon = FlipboardShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
+  shareOnFlipboard() {
+    const generatedLink = `https://share.flipboard.com/bookmarklet/popout${generateQueryParams(
       {
-        text: this.title,
+        v: 2,
+        title: this.title,
         url: this.url,
       }
     )}`;

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import LineShareIcon from './line-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,20 +14,20 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'line-share-btn',
+  templateUrl: './line-share-btn.component.html',
+  styleUrls: ['./line-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class LineShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  lineIcon = LineShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
+  shareOnLine() {
+    const generatedLink = `https://social-plugins.line.me/lineit/share${generateQueryParams(
       {
         text: this.title,
         url: this.url,

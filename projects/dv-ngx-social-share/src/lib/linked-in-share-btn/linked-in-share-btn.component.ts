@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import LinkedInShareIcon from './linkedin-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,23 +14,28 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'linked-in-share-btn',
+  templateUrl: './linked-in-share-btn.component.html',
+  styleUrls: ['./linked-in-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class LinkedInShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
+  @Input() summary?: string | undefined;
+  @Input() source?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  linkedInIcon = LinkedInShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
+  shareOnLinkedIn() {
+    const generatedLink = `https://linkedin.com/sharing/share-offsite${generateQueryParams(
       {
-        text: this.title,
         url: this.url,
+        mini: 'true',
+        title: this.title,
+        summary: this.summary,
+        source: this.source,
       }
     )}`;
 

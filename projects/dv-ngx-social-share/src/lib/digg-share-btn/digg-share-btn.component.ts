@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import DiggIcon from './dig-share-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,25 +14,23 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'digg-share-btn',
+  templateUrl: './digg-share-btn.component.html',
+  styleUrls: ['./digg-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class DiggShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  diggIcon = DiggIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
-      {
-        text: this.title,
-        url: this.url,
-      }
-    )}`;
+  shareOnDigg() {
+    const generatedLink = `http://digg.com/submit${generateQueryParams({
+      title: this.title,
+      url: this.url,
+    })}`;
 
     const windowConfig = {
       width: 600,

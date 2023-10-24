@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import TelegramShareIcon from './telegram-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,25 +14,23 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'telegram-share-btn',
+  templateUrl: './telegram-share-btn.component.html',
+  styleUrls: ['./telegram-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class TelegramShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  telegramIcon = TelegramShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
-      {
-        text: this.title,
-        url: this.url,
-      }
-    )}`;
+  shareOnTelegram() {
+    const generatedLink = `https://t.me/share/url${generateQueryParams({
+      title: this.title,
+      url: this.url,
+    })}`;
 
     const windowConfig = {
       width: 600,

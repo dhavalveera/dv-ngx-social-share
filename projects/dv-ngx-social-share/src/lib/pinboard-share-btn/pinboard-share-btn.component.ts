@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 // Icon
-import BufferIcon from './buffer-share-icon';
+import PinboardShareIcon from './pinboard-icon';
 
 // CONSTANTS
 import { defaultImgConfig } from '../../constants';
@@ -14,25 +14,25 @@ import {
 } from '../../utils';
 
 @Component({
-  selector: 'buffer-share-btn',
-  templateUrl: './buffer-share-btn.component.html',
-  styleUrls: ['./buffer-share-btn.component.css'],
+  selector: 'pinboard-share-btn',
+  templateUrl: './pinboard-share-btn.component.html',
+  styleUrls: ['./pinboard-share-btn.component.css'],
 })
-export class BufferShareBtnComponent {
+export class PinboardShareBtnComponent {
   @Input() url: string = '';
   @Input() title?: string | undefined;
+  @Input() description?: string | undefined;
   @Input() openInNewTab?: boolean = false;
   @Input() imgStyle?: { [klass: string]: any } = defaultImgConfig;
 
-  bufferIcon = BufferIcon;
+  pinBoardIcon = PinboardShareIcon;
 
-  shareOnBuffer() {
-    const generatedLink = `https://publish.buffer.com/compose${generateQueryParams(
-      {
-        text: this.title,
-        url: this.url,
-      }
-    )}`;
+  shareOnPinBoard() {
+    const generatedLink = `https://pinboard.in/add${generateQueryParams({
+      url: this.url,
+      title: this.title,
+      description: this.description,
+    })}`;
 
     const windowConfig = {
       width: 600,
